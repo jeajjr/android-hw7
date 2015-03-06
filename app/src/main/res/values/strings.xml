@@ -23,4 +23,8 @@
     <string name="dialog_your_rating">Your rating</string>
     <string name="dialog_want_to_buy">I want to buy a movie ticket</string>
     <string name="demo_frag_no_result">Complete the dialog form to see the result.</string>
+    <string name="fragment_simple_1_welcome">Welcome to simple fragment 1</string>
+    <string name="fragment_simple_2_welcome">Welcome to simple fragment 2</string>
+    <string name="fragment_simple_1">Simple fragment 1</string>
+    <string name="fragment_simple_2">Simple fragment 2</string>
 </resources>

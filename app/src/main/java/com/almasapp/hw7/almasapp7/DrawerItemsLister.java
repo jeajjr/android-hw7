@@ -16,10 +16,9 @@ public class DrawerItemsLister {
     public static final int ITEM_MOVIE_LIST = 1;
     public static final int ITEM_MOVIE_GRID = 2;
     public static final int ITEM_ABOUT_ME = 3;
-    /*
-    public static final int ITEM_DEMO_FRAG = 0;
-    public static final int ITEM_DEMO_FRAG = 0;
-*/
+    public static final int ITEM_SIMPLE_FRAG_1 = 4;
+    public static final int ITEM_SIMPLE_FRAG_2 = 5;
+
     private static HashMap creatOrganizingItem(int type) {
         HashMap item = new HashMap();
 
@@ -63,6 +62,8 @@ public class DrawerItemsLister {
         list.add(creatOrganizingItem(DrawerRecyclerViewAdapter.LINE_SEPARATOR));
 
         list.add(createSimpleMenuItem(ITEM_ABOUT_ME, context.getString(R.string.about_me_title)));
+        list.add(createSimpleMenuItem(ITEM_SIMPLE_FRAG_1, context.getString(R.string.fragment_simple_1)));
+        list.add(createSimpleMenuItem(ITEM_SIMPLE_FRAG_2, context.getString(R.string.fragment_simple_2)));
         return list;
     }
 }

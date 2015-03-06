@@ -89,6 +89,18 @@ public class ActivityMain extends ActionBarActivity {
                         .replace(R.id.container, new FragmentAboutMe())
                         .commit();
                 break;
+
+            case DrawerItemsLister.ITEM_SIMPLE_FRAG_1:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, new FragmentSimple1())
+                        .commit();
+                break;
+
+            case DrawerItemsLister.ITEM_SIMPLE_FRAG_2:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, new FragmentSimple2())
+                        .commit();
+                break;
         }
 
         drawerLayout.closeDrawer(drawer);
