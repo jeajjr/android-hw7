@@ -29,6 +29,7 @@
 
         </LinearLayout>
 
+    <!-- navigation drawer -->
     <LinearLayout
         android:id="@+id/drawer"
         android:layout_gravity="start"
@@ -37,11 +38,11 @@
         android:layout_width="240dp"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="fill_parent"
             android:layout_height="80dp"
-            android:text="Hello Drawer"
-            android:textSize="30dp"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner"/>
 
 
         <android.support.v7.widget.RecyclerView

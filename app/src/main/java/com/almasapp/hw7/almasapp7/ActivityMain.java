@@ -7,8 +7,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.LinearLayout;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ActivityMain extends ActionBarActivity {
 
@@ -32,6 +36,10 @@ public class ActivityMain extends ActionBarActivity {
 
         RecyclerView drawerList = (RecyclerView) findViewById(R.id.drawer_list);
         drawerList.setLayoutManager(new LinearLayoutManager(this));
+
+        DrawerRecyclerViewAdapter recyclerViewAdapter =
+                new DrawerRecyclerViewAdapter(this, DrawerItemsLister.createDrawerList(this));
+        drawerList.setAdapter(recyclerViewAdapter);
 
         drawerLayout.setDrawerListener(drawerToggle);
     }

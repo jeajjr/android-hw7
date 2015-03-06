@@ -5,11 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -21,42 +17,71 @@ import java.util.Map;
  * Created by José Ernesto on 12/02/2015.
  */
 public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecyclerViewAdapter.ViewHolder> {
+    public static final int ITEM_WITH_ICON = 0;
+    public static final int ITEM_SIMPLE = 1;
+    public static final int LINE_SEPARATOR = 2;
+    public static final int SPACER = 3;
+
+
     private static String TAG = "MyRecyclerViewAdapter";
 
-    private List<Map<String, ?>> mDataSet;
+    private List<Map<String, ?>> dataSet;
     private Context context;
     private int layout;
 
-    public DrawerRecyclerViewAdapter(Context context, List<Map<String, ?>> mDataSet) {
-        this.mDataSet = mDataSet;
+    public DrawerRecyclerViewAdapter(Context context, List<Map<String, ?>> dataSet) {
+        this.dataSet = dataSet;
         this.context = context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView vIcon;
-        public TextView vTitle;
-        public TextView vDescription;
-        public ImageButton menuButton;
-        public RatingBar ratingBar;
+        public ImageView icon;
+        public TextView name;
 
         public ViewHolder(View v) {
             super(v);
 
+
+            icon = (ImageView) v.findViewById(R.id.itemIcon);
+            name = (TextView) v.findViewById(R.id.itemName);
         }
 
-        public void bindMovieData (Map<String, ?> movie) {
-
+        public void bindData (Map<String, ?> item) {
+            switch ((Integer) item.get("type")) {
+                case ITEM_SIMPLE:
+                    name.setText((String) item.get("name"));
+                    break;
+                case ITEM_WITH_ICON:
+                    name.setText((String) item.get("name"));
+                    icon.setImageResource((Integer) item.get("icon"));
+                    break;
+            }
         }
     }
 
 
+    @Override
+    public int getItemViewType(int position) {
+        return (Integer) dataSet.get(position).get("type");
+    }
 
     @Override
     public DrawerRecyclerViewAdapter.ViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
         View v = null;
 
-        //v = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_row_linear, parent, false);
-
+        switch (viewType) {
+            case  ITEM_WITH_ICON:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.drawer_item_icon, parent, false);
+                break;
+            case ITEM_SIMPLE:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.drawer_item_simple, parent, false);
+                break;
+            case LINE_SEPARATOR:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.drawer_item_separator, parent, false);
+                break;
+            case SPACER:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.drawer_8dp_space, parent, false);
+        }
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -64,13 +89,13 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
 
     @Override
     public void onBindViewHolder (ViewHolder holder, int position) {
-        Map<String, ?> movie = mDataSet.get(position);
-        holder.bindMovieData(movie);
+        Map<String, ?> item = dataSet.get(position);
+        holder.bindData(item);
     }
 
     @Override
     public int getItemCount() {
-        return mDataSet.size();
+        return dataSet.size();
     }
 
 
