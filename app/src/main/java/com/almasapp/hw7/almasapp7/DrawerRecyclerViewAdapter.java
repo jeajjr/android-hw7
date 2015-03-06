@@ -2,6 +2,7 @@ package com.almasapp.hw7.almasapp7;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
 
     private List<Map<String, ?>> dataSet;
     private OnDrawerItemClickListener onDrawerItemClickListener;
+    private int currentItem;
 
     public DrawerRecyclerViewAdapter(Context context, List<Map<String, ?>> dataSet) {
         this.dataSet = dataSet;
@@ -41,24 +43,36 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView icon;
         public TextView name;
+        View currentView;
 
         public ViewHolder(View v) {
             super(v);
 
+            currentView = v;
+
             icon = (ImageView) v.findViewById(R.id.itemIcon);
             name = (TextView) v.findViewById(R.id.itemName);
+
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int id = (Integer) dataSet.get(getPosition()).get("id");
                     Log.d(TAG, "adapter received click on item " + id);
-                    onDrawerItemClickListener.onItemClick(v, id);
+
+                    if ((Integer) dataSet.get(getPosition()).get("type") == ITEM_WITH_ICON ||
+                            (Integer) dataSet.get(getPosition()).get("type") == ITEM_SIMPLE) {
+                        if (onDrawerItemClickListener != null)
+                            onDrawerItemClickListener.onItemClick(v, id);
+
+                        currentItem = getPosition();
+                        notifyDataSetChanged();
+                    }
                 }
             });
         }
 
-        public void bindData (Map<String, ?> item) {
+        public void bindData (Map<String, ?> item, int position) {
             switch ((Integer) item.get("type")) {
                 case ITEM_SIMPLE:
                     name.setText((String) item.get("name"));
@@ -68,6 +82,13 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
                     icon.setImageResource((Integer) item.get("icon"));
                     break;
             }
+
+            if (currentItem == position) {
+                currentView.setBackgroundColor(0xFF2496d4);
+            }
+            else
+                currentView.setBackgroundColor(0x00000000);
+
         }
     }
 
@@ -101,7 +122,7 @@ public class DrawerRecyclerViewAdapter extends RecyclerView.Adapter<DrawerRecycl
     @Override
     public void onBindViewHolder (ViewHolder holder, int position) {
         Map<String, ?> item = dataSet.get(position);
-        holder.bindData(item);
+        holder.bindData(item, position);
     }
 
     @Override

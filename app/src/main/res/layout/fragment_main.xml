@@ -1,0 +1,22 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.almasapp.hw7.almasapp7.FragmentMain">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        android:textSize="40dp"
+        android:text="@string/front_page_title"
+        android:id="@+id/textViewFrontPageTitle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="95dp"
+        android:textColor="#ff540015"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

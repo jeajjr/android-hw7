@@ -15,6 +15,7 @@ public class DrawerItemsLister {
     private static HashMap creatOrganizingItem(int type) {
         HashMap item = new HashMap();
 
+        item.put("id", -1);
         item.put("type", type);
 
         return item;
