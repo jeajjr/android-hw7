@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class DrawerItemsLister {
 
-    private static HashMap createMenuItem (int type) {
+    private static HashMap creatOrganizingItem(int type) {
         HashMap item = new HashMap();
 
         item.put("type", type);
@@ -20,18 +20,20 @@ public class DrawerItemsLister {
         return item;
     }
 
-    private static HashMap createSimpleMenuItem(String name) {
+    private static HashMap createSimpleMenuItem(int uniqueID, String name) {
         HashMap item = new HashMap();
 
+        item.put("id", uniqueID);
         item.put("name", name);
         item.put("type", DrawerRecyclerViewAdapter.ITEM_SIMPLE);
 
         return item;
     }
 
-    private static HashMap createMenuItemWithIcon(String name, int drawableID) {
+    private static HashMap createMenuItemWithIcon(int uniqueID, String name, int drawableID) {
         HashMap item = new HashMap();
 
+        item.put("id", uniqueID);
         item.put("name", name);
         item.put("icon", drawableID);
         item.put("type", DrawerRecyclerViewAdapter.ITEM_WITH_ICON);
@@ -42,16 +44,16 @@ public class DrawerItemsLister {
     public static List<Map<String, ?>> createDrawerList(Context context) {
         ArrayList<Map<String, ?>> list = new ArrayList<Map<String, ?>>();
 
-        list.add(createMenuItem(DrawerRecyclerViewAdapter.SPACER));
-        list.add(createMenuItem(DrawerRecyclerViewAdapter.SPACER));
+        list.add(creatOrganizingItem(DrawerRecyclerViewAdapter.SPACER));
+        list.add(creatOrganizingItem(DrawerRecyclerViewAdapter.SPACER));
 
-        list.add(createMenuItemWithIcon(context.getResources().getString(R.string.demo_fragment), R.drawable.redirect_icon));
-        list.add(createMenuItemWithIcon(context.getResources().getString(R.string.movies_list), R.drawable.list_icon));
-        list.add(createMenuItemWithIcon(context.getResources().getString(R.string.movies_grid), R.drawable.grid_icon));
+        list.add(createMenuItemWithIcon(0, context.getResources().getString(R.string.demo_fragment), R.drawable.redirect_icon));
+        list.add(createMenuItemWithIcon(1, context.getResources().getString(R.string.movies_list), R.drawable.list_icon));
+        list.add(createMenuItemWithIcon(2, context.getResources().getString(R.string.movies_grid), R.drawable.grid_icon));
 
-        list.add(createMenuItem(DrawerRecyclerViewAdapter.LINE_SEPARATOR));
+        list.add(creatOrganizingItem(DrawerRecyclerViewAdapter.LINE_SEPARATOR));
 
-        list.add(createSimpleMenuItem("flango"));
+        list.add(createSimpleMenuItem(3, "flango"));
         return list;
     }
 }
