@@ -65,26 +65,26 @@ public class ActivityMain extends ActionBarActivity {
 
     public void selectItem(View view, int uniqueID) {
         switch (uniqueID) {
-            // Demo fragment
-            case 0:
+            case DrawerItemsLister.ITEM_DEMO_FRAG:
                 break;
 
-            // Movie list
-            case 1:
-                Log.d(TAG, "calling linear list");
-
+            case DrawerItemsLister.ITEM_MOVIE_LIST:
                 getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, FragmentRecyclerView.newInstance(moviesList, FragmentRecyclerView.LAYOUT_LINEAR))
                     .commit();
                 break;
 
-            // Movie list (grid)
-            case 2:
+            case DrawerItemsLister.ITEM_MOVIE_GRID:
                 getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, FragmentRecyclerView.newInstance(moviesList, FragmentRecyclerView.LAYOUT_GRID))
                     .commit();
                 break;
 
+            case DrawerItemsLister.ITEM_ABOUT_ME:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, new FragmentAboutMe())
+                        .commit();
+                break;
         }
 
         drawerLayout.closeDrawer(drawer);

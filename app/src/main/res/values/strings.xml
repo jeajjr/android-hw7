@@ -11,4 +11,10 @@
     <string name="movies_grid">Movies grid</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="front_page_title">Homework 7</string>
+    <string name="about_me_title">About me</string>
+    <string name="my_name_title">My name:</string>
+    <string name="my_name">Jose Ernesto Almas de Jesus Junior</string>
+    <string name="class_session_title">Class session:</string>
+    <string name="class_session">CSE 400</string>
+    <string name="picture_title">A picture of me:</string>
 </resources>
