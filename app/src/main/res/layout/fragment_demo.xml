@@ -1,0 +1,39 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical"
+    tools:context="com.almasapp.hw7.almasapp7.FragmentDemo"
+    android:background="#ff84bbff">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/demo_fragment"
+        android:textSize="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ff0f3332" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:id="@+id/buttonDialogDemo"
+        android:text="@string/demo_frag_demo_dialog"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/demo_frag_no_result"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:textColor="#ff0f3332"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:id="@+id/textViewDemoResult" />
+
+
+</LinearLayout>

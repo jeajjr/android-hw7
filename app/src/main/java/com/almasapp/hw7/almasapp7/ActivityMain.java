@@ -1,5 +1,6 @@
 package com.almasapp.hw7.almasapp7;
 
+import android.support.v4.app.DialogFragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -66,6 +67,9 @@ public class ActivityMain extends ActionBarActivity {
     public void selectItem(View view, int uniqueID) {
         switch (uniqueID) {
             case DrawerItemsLister.ITEM_DEMO_FRAG:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, new FragmentDemo())
+                        .commit();
                 break;
 
             case DrawerItemsLister.ITEM_MOVIE_LIST:
