@@ -71,6 +71,4 @@ public class FragmentDemo extends Fragment {
 
         return view;
     }
-
-
 }
